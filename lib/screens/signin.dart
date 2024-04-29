@@ -1,12 +1,5 @@
-// import 'dart:js';
-// import 'dart:js_util';
-// import 'dart:math';
-
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-// import 'package:flutter/rendering.dart';
-// import 'package:flutter/widgets.dart';
 import 'package:tugas1/screens/signup.dart';
 import 'package:tugas1/theme/theme.dart';
 import 'package:tugas1/widgets/custom_scaffold.dart';
