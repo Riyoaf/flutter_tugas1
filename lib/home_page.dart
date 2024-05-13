@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_app/add_user.dart';
+import 'package:my_app/list_user.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -76,26 +78,80 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               height: 15,
                             ),
-                            ElevatedButton(
-                              onPressed: () {
-                                goUser(dio, myStorage, apiUrl);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                    color: Colors.black26,
-                                    width: 1,
+                            Row(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    goUser(dio, myStorage, apiUrl);
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        color: Colors.black26,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    backgroundColor: Colors.blue.shade200,
                                   ),
-                                  borderRadius: BorderRadius.circular(5),
+                                  child: const Text(
+                                    'Check',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                                backgroundColor: Colors.blue.shade200,
-                              ),
-                              child: const Text(
-                                'Check',
-                                style: TextStyle(
-                                  color: Colors.white,
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => AddUser()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        color: Colors.black26,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    backgroundColor: Colors.blue.shade200,
+                                  ),
+                                  child: const Text(
+                                    'Add User',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => ListUser()),
+                                    );
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                      side: const BorderSide(
+                                        color: Colors.black26,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    backgroundColor: Colors.blue.shade200,
+                                  ),
+                                  child: const Text(
+                                    'Check List User',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),

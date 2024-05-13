@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'My_App',
       theme: ThemeData(primarySwatch: Colors.deepPurple),
-      initialRoute: '/home', // Tentukan rute awal sebagai '/login'
+      initialRoute: '/login', // Tentukan rute awal sebagai '/login'
       routes: {
         '/login': (context) => LoginPage(), // Tambahkan rute untuk LoginPage
         '/signup': (context) => SignUpPage(), // Tambahkan rute untuk SignUpPage
