@@ -101,6 +101,10 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
+                                SizedBox(
+                                  height: 50,
+                                  width: 30,
+                                ),
                                 ElevatedButton(
                                   onPressed: () {
                                     Navigator.push(
@@ -125,6 +129,9 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.white,
                                     ),
                                   ),
+                                ),
+                                SizedBox(
+                                  width: 30,
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
@@ -172,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                   Padding(
                     padding: const EdgeInsets.all(15),
                     child: Container(
-                      height: 60,
+                      height: 50,
                       width: double.infinity,
                       decoration: BoxDecoration(
                           color: Colors.white12,
