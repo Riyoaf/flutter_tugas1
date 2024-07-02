@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
-import 'login_page.dart'; // Import LoginPage untuk navigasi
-import 'package:icons_plus/icons_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:get_storage/get_storage.dart';
+import 'login_page.dart';
+import 'home_page.dart';
+import 'package:icons_plus/icons_plus.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -19,16 +21,8 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController passwordController = TextEditingController();
 
   final dio = Dio();
+  final myStorage = GetStorage();
   final apiUrl = 'https://mobileapis.manpits.xyz/api';
-
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -70,10 +64,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(height: 20),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
-                    );
+                    Navigator.pushReplacementNamed(context, '/login');
                   },
                   child: _buildGreyText("Back to Login"),
                 ),
@@ -94,7 +85,7 @@ class _SignUpPageState extends State<SignUpPage> {
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: const TextStyle(color: Colors.white),
-        enabledBorder: UnderlineInputBorder(
+        enabledBorder: const UnderlineInputBorder(
           borderSide: BorderSide(color: Colors.white),
         ),
       ),
@@ -114,7 +105,14 @@ class _SignUpPageState extends State<SignUpPage> {
     return ElevatedButton(
       onPressed: () {
         goRegister(
-            dio, apiUrl, namedController, emailController, passwordController);
+          context,
+          dio,
+          myStorage,
+          apiUrl,
+          namedController,
+          emailController,
+          passwordController,
+        );
       },
       child: const Text("SIGN UP"),
     );
@@ -143,8 +141,8 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 }
 
-void goRegister(
-    dio, apiUrl, namedController, emailController, passwordController) async {
+void goRegister(BuildContext context, dio, myStorage, apiUrl, namedController,
+    emailController, passwordController) async {
   try {
     final response = await dio.post(
       '$apiUrl/register',

@@ -20,9 +20,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(primarySwatch: Colors.deepPurple),
       initialRoute: '/login', // Tentukan rute awal sebagai '/login'
       routes: {
-        '/login': (context) => LoginPage(), // Tambahkan rute untuk LoginPage
-        '/signup': (context) => SignUpPage(), // Tambahkan rute untuk SignUpPage
-        '/home': (context) => HomePage(), // Tambahkan rute untuk SignUpPage
+        '/login': (context) =>
+            const LoginPage(), // Tambahkan rute untuk LoginPage
+        '/signup': (context) =>
+            const SignUpPage(), // Tambahkan rute untuk SignUpPage
+        '/': (context) => HomePage(), // Tambahkan rute untuk SignUpPage
       },
     );
   }

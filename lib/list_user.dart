@@ -15,8 +15,6 @@ class _ListUserState extends State<ListUser> {
   final myStorage = GetStorage();
   final apiUrl = 'https://mobileapis.manpits.xyz/api';
   List<dynamic> users = [];
-  // final List<String> entries = <String>['A', 'B', 'C'];
-  // final List<int> colorCodes = <int>[600, 500, 100];
 
   @override
   void initState() {
@@ -57,10 +55,10 @@ class _ListUserState extends State<ListUser> {
     }
   }
 
-  void editUser() {
+  void editUser(Map<String, dynamic> user) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => EditUser()),
+      MaterialPageRoute(builder: (context) => EditUser(user: user)),
     );
   }
 
@@ -87,7 +85,7 @@ class _ListUserState extends State<ListUser> {
                         children: [
                           IconButton(
                             onPressed: () {
-                              editUser();
+                              editUser(user);
                             },
                             icon: Icon(
                               Icons.edit,

@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  bool rememberUser = false;
 
   final dio = Dio();
   final myStorage = GetStorage();
@@ -42,8 +43,6 @@ class _LoginPageState extends State<LoginPage> {
       );
     }
   }
-
-  bool rememberUser = false;
 
   @override
   Widget build(BuildContext context) {
@@ -206,14 +205,12 @@ void goLogin(BuildContext context, dio, myStorage, apiUrl, emailController,
       },
     );
     print(response.data);
-
     myStorage.write('token', response.data['data']['token']);
-
-    Navigator.push(
+    Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => HomePage()),
     );
   } on DioException catch (e) {
-    print('${e.response} - ${e.response?.statusCode}');
+    print('Error : ${e.response?.statusCode} - ${e.response?.data}');
   }
 }
